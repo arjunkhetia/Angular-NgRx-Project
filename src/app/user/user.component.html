@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Store Key"
+            [(ngModel)]="storeKey"
+          />
+          <label for="floatingInput">Store Key</label>
+        </div>
+        <div class="col-md-4 form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Store Value"
+            [(ngModel)]="storeValue"
+          />
+          <label for="floatingInput">Store Value</label>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+          <button class="btn btn-primary w-100" [disabled]="!storeKey || !storeValue" type="button" (click)="addToStore()">Add</button>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+          <button class="btn btn-primary w-100" [disabled]="!userExists" type="button" (click)="clearStore()">Delete</button>
+        </div>
+      </div>
+      <br />
+      <div *ngIf="(user$ | async).id || (user$ | async).users">
+        User: 
+        <pre>
+          {{ user$ | async | json }}
+        </pre>
+        UserId: {{ userId$ | async }}
+      </div>
+      <br />
+      <div class="col-md-3 d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary w-100" type="button" (click)="loadUsersFromAPI()">Load Users From API</button>
+      </div>
+    </div>
+  </div>
+  
